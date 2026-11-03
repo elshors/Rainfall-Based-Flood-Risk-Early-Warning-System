@@ -1,0 +1,48 @@
+
+
+    .risk-summary {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    .card {
+        background-color: white;
+        flex: 1 1 200px;
+        max-width: 250px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        text-align: center;
+    }
+
+    .card h3 {
+        margin: 0 0 10px;
+        font-size: 1.2rem;
+    }
+
+    .card p {
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    /* Risk level colors */
+    .safe { border-top: 5px solid #4CAF50; }
+    .monitor { border-top: 5px solid #FFEB3B; }
+    .alert { border-top: 5px solid #FF9800; }
+    .critical { border-top: 5px solid #F44336; color: white; background-color: #ff6b6b; }
+
+    /* Barangay list under cards */
+    .barangay-list {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        text-align: left;
+    }
+
+    .barangay-list li {
+        list-style: none;
+        padding: 3px 0;
+    }

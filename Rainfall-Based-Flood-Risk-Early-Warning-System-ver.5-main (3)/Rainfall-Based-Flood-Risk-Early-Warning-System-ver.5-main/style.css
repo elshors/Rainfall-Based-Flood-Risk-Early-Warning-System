@@ -1,0 +1,650 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #f4f6f9;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background-color: #1f2937;
+    color: white;
+    padding: 20px;
+    position: fixed;
+}
+
+.sidebar h2 {
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 12px 0;
+    cursor: pointer;
+    color: #d1d5db;
+}
+
+.sidebar ul li:hover {
+    color: white;
+}
+
+/* MAIN */
+.main {
+    margin-left: 220px;
+    width: 100%;
+    padding: 20px;
+}
+/* Navitation Items */
+.nav-item {
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-item:hover {   
+    background: rgba(255,255,255,0.08);
+    color: white;
+    transform: translateX(4px);
+}
+
+.nav-item.active {
+    background: rgba(255,255,255,0.12);
+    color: white;
+}
+
+
+
+/* TOP BAR */
+.topbar {  
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+
+    background: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); /* subtle shadow */
+    margin-bottom: 20px;
+}
+
+
+.nav-menu {
+    flex-grow: 1; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 8px;
+
+}
+/* GREETING */
+.greeting {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-circle {
+  width: 45px;
+    height: 45px;
+    background: #2c3e50; /* Your dark theme color */
+    border-radius: 50%;
+    border: 2px solid #f0f4f8;
+    
+    /* These three lines center the icon perfectly */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-circle i {
+    color: white;       /* Icon color */
+    font-size: 1.2rem;  /* Icon size */
+}
+
+.greeting span {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.greeting h3 {
+    font-size: 16px;
+    margin-top: 2px;
+}
+
+/* SEARCH BOX */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 300px; /* Adjust as needed */
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    color: #64748b; /* Subtle grey color */
+    pointer-events: none; /* Allows you to click "through" the icon to the input */
+}
+
+#searchInput {
+    width: 100%;
+    padding: 10px 10px 10px 40px; /* Extra padding on the left (40px) to make room for the icon */
+    border: 1.5px solid #e2e8f0;
+    border-radius: 20px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#searchInput:focus {
+    border-color: #6366f1;
+}
+
+/* TABLE */
+.table-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #e5e7eb;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    font-weight: bold;
+}
+
+tbody tr {
+    border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* STATUS BADGES */
+.badge {
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+}
+
+/* Risk Colors */
+
+.safe {
+    background-color: #2ecc71; /* Green */
+}
+
+.monitor {
+    background-color: #f1c40f; /* Yellow */
+    color: black;
+}
+
+.alert {
+    background-color: #e67e22; /* Orange */
+}
+
+.critical {
+    background-color: #e74c3c; /* Red */
+}
+
+
+/********** ADD BUTTON **********/
+/********** SLEEK ADD BUTTON **********/
+.add-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    /* Slightly more vertical padding for a premium feel */
+    padding: 12px 24px;
+    margin-bottom: 15px;
+
+    /* A vibrant, solid brand color or a very subtle gradient */
+    background: #2563eb; 
+    color: #ffffff;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px; /* Smoother, larger corner radius */
+
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    font-weight: 500; /* Slightly lighter weight is often sleeker */
+    letter-spacing: -0.01em;
+
+    cursor: pointer;
+    outline: none;
+
+    /* Soft, layered shadow for "ambient" depth */
+    box-shadow: 
+        0 1px 2px rgba(0, 0, 0, 0.05),
+        0 4px 12px rgba(37, 99, 235, 0.2);
+
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.add-btn:hover {
+    background: #1d4ed8; /* Slight darken */
+    transform: translateY(-1px);
+    box-shadow: 
+        0 4px 6px rgba(0, 0, 0, 0.05),
+        0 10px 20px rgba(37, 99, 235, 0.3);
+}
+
+.add-btn:active {
+    transform: translateY(0) scale(0.98); /* Adds a tactile "click" feel */
+}
+
+.add-btn i {
+    font-size: 16px; /* Icon should be legible but not bulky */
+    transition: transform 0.2s ease;
+}
+
+.add-btn:hover i {
+    transform: rotate(90deg); /* Subtle animation for the 'plus' icon */
+}
+
+/* Container to keep buttons aligned */
+.action-btns {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+}
+
+/* Base style for table buttons */
+.btn-edit, .btn-delete {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+/* Edit Button - Modern Amber/Gold */
+.btn-edit {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.btn-edit:hover {
+    background-color: #fde68a;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(146, 64, 14, 0.1);
+}
+
+/* Delete Button - Modern Rose/Red */
+.btn-delete {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.btn-delete:hover {
+    background-color: #fecaca;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(153, 27, 27, 0.1);
+}
+
+/* Active "Click" effect */
+.btn-edit:active, .btn-delete:active {
+    transform: scale(0.95);
+}
+
+/* Icon sizing */
+.btn-edit i, .btn-delete i {
+    font-size: 12px;
+}
+
+/* button container to keep buttons aligned */
+
+.button-container {
+    display: flex;
+    justify-content: flex-start; /* Aligns button to the left */
+    padding: 10px 0 25px 0;      /* Top, Right, Bottom, Left */
+    margin-top: 10px;            /* Extra space from the header */
+}
+
+/* modal styles */
+/* The semi-transparent background */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px); /* Modern blur effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* The actual form card */
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    width: 400px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Form Styling */
+.form-row {
+    display: flex;
+    gap: 20px;      /* space between latitude and longitude */
+    margin-bottom: 15px;  /* space between rows */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-bottom: 10px;  /* space between label and next group */
+}
+
+.form-group label {
+    margin-bottom: 6px;   /* space between label and input */
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+
+
+input, select {
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.2s;
+}
+
+input:focus { border-color: #2563eb; }
+
+.modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+.btn-primary { background: #2563eb; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; flex: 2; font-weight: 600; }
+.btn-secondary { background: #f1f5f9; color: #64748b; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; flex: 1; }
+
+
+/* Summary Cards */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.summary-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #2563eb;
+}
+
+.summary-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.summary-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-top: 5px;
+}
+
+/* Risk Badges */
+.risk-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.risk-safe { background: #dcfce7; color: #166534; }
+.risk-monitor { background: #ffecb3; color: #854d0e; }
+.risk-alert { background: #fef3c7; color: #92400e; }
+.risk-critical { background: #fee2e2; color: #991b1b; }
+
+/* Table Styling */
+.forecast-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center; /* Center all cell contents */
+}
+
+.forecast-table th,
+.forecast-table td {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    text-align: center; /* Center individual cells just to be safe */
+}
+
+.forecast-table th {
+    background-color: #2f3c4f;
+    color: white;
+    text-align: center;
+}
+
+/*  alert page styling */
+ .risk-summary {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    .card {
+        background-color: white;
+        flex: 1 1 200px;
+        max-width: 250px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        text-align: center;
+    }
+
+    .card h3 {
+        margin: 0 0 10px;
+        font-size: 1.2rem;
+    }
+
+    .card p {
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    /* Risk level colors */
+    .safe { border-top: 5px solid #4CAF50; color: black; background-color: #4CAF50}
+    .monitor { border-top: 5px solid #FFEB3B; color: black; background-color: #FFEB3B}
+    .alert { border-top: 5px solid #FF9800; color: black; background-color: #FF9800}
+    .critical { border-top: 5px solid #fe1303; color: black; background-color: #fe1303; }
+
+    /* Barangay list under cards */
+    .barangay-list {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        text-align: left;
+    }
+
+    .barangay-list li {
+        list-style: none;
+        padding: 3px 0;
+    }
+
+
+    /* MODAL FOR ALERT DETAILS */
+
+    .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px; /* space for small screens */
+    box-sizing: border-box;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 10px;
+    max-height: 90vh; 
+    width: 90%;
+    max-width: 600px; 
+    overflow: hidden; 
+}
+
+.modal-header {
+    text-align: center;           
+    padding: 20px 15px;           
+    border-bottom: 1.5px solid #dee2e6;
+    font-size: 1.5rem;          
+    font-weight: 700;             
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 10;
+    line-height: 1.4;            
+}
+
+.modal-list {
+    overflow-y: auto;  /* makes the table scrollable */
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.modal-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.modal-list th, 
+.modal-list td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-footer {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+/* Optional: smooth scrolling for modal list */
+.modal-list {
+    scroll-behavior: smooth;
+}
+
+/* Card hover effect */
+.risk-summary .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Default card style */
+.risk-summary .card {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    cursor: pointer;
+}
+
+/* Border highlight on hover */
+.risk-summary .card:hover {
+    border-color: #3498db;
+}
+
+/* Badge styles for risk levels */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: white;
+    text-align: center;
+    min-width: 70px;
+}
+
+.badge-safe { background-color: #2ecc71; color: black; }
+.badge-monitor { background-color: #f1c40f; color: black; }
+.badge-alert { background-color: #e67e22; color: black; }
+.badge-critical { background-color: #e74c3c; color: black; }
+
+/* Form title adjustment for barangay */
+#formTitle {
+    text-align: center;
+    padding: 15px 0;
+    margin: 0;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #eee;
+}

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flood Risk Admin Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<body>
+
+<!-- SIDEBAR -->    
+<div class="sidebar">
+    <div class="sidebar-header">
+        
+        <br>
+        <h2>Flood Watch <span>CDO</span></h2>
+        <br><br>
+    </div>
+    
+    <nav class="nav-menu">
+        <a href="http://localhost/Version%202.1.6/dashboard.html" class="nav-item">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Dashboard</span>
+        </a>
+        <a href="http://localhost/Version%202.1.6/barangay_page.html" class="nav-item">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Barangays</span>
+        </a>
+        <a href="#" class="nav-item active">
+            <i class="fa-solid fa-bell"></i>
+            <span>Alerts</span>
+        </a>
+         <a href="http://localhost/Version%202.1.6/3_hr_forecast_page.html" class="nav-item">
+            <i class="fa-solid fa-cloud-showers-heavy"></i>
+            <span>3H Forecast</span>
+        </a>
+    
+        <a href="http://localhost/Version%202.1.6/forecast_page.html" class="nav-item">
+            <i class="fa-solid fa-cloud-showers-heavy"></i>
+            <span>5-Day Forecast</span>
+        </a>
+
+        <a href="http://localhost/Version%202.1.6/report_page.html" class="nav-item">
+            <i class="fa-solid fa-file-contract"></i>
+            <span>Reports</span>
+        </a>
+        
+        <a href="http://localhost/Version%202.1.6/log_page.html" class="nav-item">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Logs</span>
+        </a>
+    </nav>
+</div>
+
+<div class="main">
+<div class="topbar">
+    <header class="content-header">
+        <div>
+           <h1>Alert Notifications</h1>
+            <p>Unified Barangay Risk Assessment</p>
+        </div>
+    </header>
+
+    <div class="topbar-right">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search barangay...">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        </div>
+
+        <div class="greeting">
+            <div class="profile-circle">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div>
+                <span>Hello there,</span>
+                <h3 id="adminName">Admin</h3>
+            </div>
+        </div>
+    </div>
+</div>
+    <br><br>
+
+    <div class="alerts-container">
+
+<!-- SAFE -->
+<div class="alert-card safe">
+<div class="alert-icon">
+<i class="fa-solid fa-circle-check"></i>
+</div>
+
+<div>
+<div class="alert-header">
+SAFE <span class="alert-barangay">• Barangay Carmen</span>
+</div>
+
+<div class="alert-message">
+Rainfall levels are normal. No flood risk detected.
+</div>
+</div>
+</div>
+
+<!-- MONITOR -->
+<div class="alert-card monitor">
+<div class="alert-icon">
+<i class="fa-solid fa-eye"></i>
+</div>
+
+<div>
+<div class="alert-header">
+MONITOR <span class="alert-barangay">• Barangay Lapasan</span>
+</div>
+
+<div class="alert-message">
+Rainfall increasing. Monitoring conditions for possible flooding.
+</div>
+</div>
+</div>
+
+<!-- ALERT -->
+<div class="alert-card alert">
+<div class="alert-icon">
+<i class="fa-solid fa-triangle-exclamation"></i>
+</div>
+
+<div>
+<div class="alert-header">
+ALERT <span class="alert-barangay">• Barangay Macasandig</span>
+</div>
+
+<div class="alert-message">
+Heavy rainfall detected. Flood risk rising in low-lying areas.
+</div>
+</div>
+</div>
+
+<!-- CRITICAL -->
+<div class="alert-card critical">
+<div class="alert-icon">
+<i class="fa-solid fa-shield-halved"></i>
+</div>
+
+<div>
+<div class="alert-header">
+CRITICAL <span class="alert-barangay">• Barangay Kauswagan</span>
+</div>
+
+<div class="alert-message">
+Extreme rainfall detected. Immediate evacuation may be required.
+</div>
+</div>
+</div>
+
+</div>
+
+<style>
+
+
+/* Page title */
+
+.page-title{
+    font-size:28px;
+    margin-bottom:25px;
+    color:#333;
+}
+
+/* Alert container */
+
+.alerts-container{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+/* Alert card */
+
+.alert-card{
+    display:flex;
+    gap:15px;
+    padding:18px;
+    border-radius:10px;
+    background:white;
+    border-left:6px solid;
+    align-items:flex-start;
+    box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Icon */
+
+.alert-icon{
+    font-size:20px;
+    margin-top:2px;
+}
+
+/* Header */
+
+.alert-header{
+    font-weight:600;
+    margin-bottom:5px;
+}
+
+.alert-barangay{
+    color:#666;
+    margin-left:6px;
+}
+
+/* Message */
+
+.alert-message{
+    font-size:14px;
+    color:#555;
+}
+
+/* SAFE */
+
+.safe{
+    border-color:#10b981;
+}
+
+.safe .alert-header{
+    color:#10b981;
+}
+
+/* MONITOR */
+
+.monitor{
+    border-color:#f0d310;
+}
+
+.monitor .alert-header{
+    color:#f0d310;
+}
+
+/* ALERT */
+
+.alert{
+    border-color:#f97316;
+}
+
+.alert .alert-header{
+    color:#f97316;
+}
+
+/* CRITICAL */
+
+.critical{
+    border-color:#ef4444;
+}
+
+.critical .alert-header{
+    color:#ef4444;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between; /* Pushes content to opposite ends */
+    align-items: center;            /* Vertically centers items */
+    padding: 10px 20px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Header Text Styling */
+.content-header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #333;
+}
+
+.content-header p {
+    font-size: 0.85rem;
+    margin: 0;
+    color: #666;
+}
+
+/* Grouping Search and Profile on the Right */
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between search box and profile */
+}
+
+/* Ensure search box doesn't grow too large */
+.search-box {
+    position: relative;
+    width: 250px;
+}
+
+</style>
+
+    <script src="dashboard.js"></script>
+    <script src="alert_page_2.js"></script>
+</body>
+</html>

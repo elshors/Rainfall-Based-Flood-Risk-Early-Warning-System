@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flood Risk Admin Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->    
+<div class="sidebar">
+    <div class="sidebar-header">
+        <br>
+        <h2>Flood Watch <span>CDO</span></h2>
+        <br><br>
+    </div>
+    
+    <nav class="nav-menu">
+        <a href="http://localhost/Version%202.1.6/dashboard.html" class="nav-item">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="http://localhost/Version%202.1.6/barangay_page.html" class="nav-item">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Barangays</span>
+        </a>
+
+        <a href="http://localhost/Version%202.1.6/alert_page.html" class="nav-item">
+            <i class="fa-solid fa-bell"></i>
+            <span>Alerts</span>
+        </a>
+
+        <a href="http://localhost/Version%202.1.6/3_hr_forecast_page.html" class="nav-item">
+            <i class="fa-solid fa-cloud-showers-heavy"></i>
+            <span>3H Forecast</span>
+        </a>
+    
+        <a href="http://localhost/Version%202.1.6/forecast_page.html" class="nav-item active">
+            <i class="fa-solid fa-cloud-showers-heavy"></i>
+            <span>5-Day Forecast</span>
+        </a>
+
+        <a href="http://localhost/Version%202.1.6/report_page.html" class="nav-item">
+            <i class="fa-solid fa-file-contract"></i>
+            <span>Reports</span>
+        </a>
+
+        <a href="http://localhost/Version%202.1.6/log_page.html" class="nav-item">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Logs</span>
+        </a>
+    </nav>
+</div>
+
+<div class="main">
+     <div class="topbar">
+    <header class="content-header">
+        <div>
+            <h1>Barangay Forecast Center</h1>
+            <p>Unified 5-Day Risk Assessment (Next 3hr Forecasting)</p>
+        </div>
+    </header>
+
+    <div class="topbar-right">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search barangay...">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        </div>
+
+        <div class="greeting">
+            <div class="profile-circle">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div>
+                <span>Hello there,</span>
+                <h3 id="adminName">Admin</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+
+
+    <div id="allBarangaysContainer">
+        </div>
+
+<style>
+    /* Section Title & Elevation Info */
+    .barangay-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #f1f5f9;
+        padding: 10px 20px;
+        border-radius: 8px;
+        margin: 30px 0 10px 0;
+        border-left: 5px solid #2563eb;
+    }
+
+    .barangay-section-title {
+        margin: 0;
+        font-size: 1.25rem;
+        color: #1e293b;
+    }
+
+    .elevation-info {
+        font-size: 0.9rem;
+        color: #64748b;
+    }
+
+    /* Table Styling */
+    .forecast-table {
+        width: 100%;
+        border-collapse: collapse; /* Critical: removes gaps between columns */
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        color: #2f3c4f;
+    }
+
+    /* Uniform Blue Header Row */
+    .forecast-table thead tr {
+    background-color: #2f3c4f;
+}
+
+.forecast-table thead th {
+    color: white;
+    font-weight: 600;
+}
+
+    .forecast-table th, 
+    .forecast-table td {
+        padding: 12px;
+        text-align: center; /* This now applies to EVERY column, including the first */
+        vertical-align: middle;
+        border-bottom: 1px solid #f1f5f9;
+    }
+
+    /* Change this: remove 'text-align: left' */
+    .forecast-table td:first-child, 
+    .forecast-table th:first-child {
+        text-align: center; /* Forces the Day column to center */
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    /* Ensure the Risk column still centers the badge */
+    .risk-column {
+        display: table-cell; /* Change from flex to table-cell if you want the border back */
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .risk-badge {
+        display: inline-flex; /* Keeps the icon and text together inside the centered cell */
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 4px 12px;
+        border-radius: 20px;
+        /* ... the rest of your badge styles ... */
+    }
+   /* 1. SAFE - Green */
+.risk-safe { 
+    background-color: #e6f4ea; 
+    color: #1e7e34; 
+    border: 1px solid #c3e6cb; 
+}
+
+/* 2. MONITOR - Yellow */
+.risk-monitor { 
+    background-color: #fef9c3; 
+    color: #856404; 
+    border: 1px solid #fde68a; 
+}
+
+/* 3. ALERT - Orange */
+.risk-alert { 
+    background-color: #ffedd5; 
+    color: #9a3412; 
+    border: 1px solid #fed7aa; 
+}
+
+/* 4. CRITICAL - Red (with Pulse Animation) */
+.risk-critical { 
+    background-color: #fee2e2; 
+    color: #991b1b; 
+    border: 1px solid #fecaca;
+    animation: pulse-red 2s infinite;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between; /* Pushes content to opposite ends */
+    align-items: center;            /* Vertically centers items */
+    padding: 10px 20px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Header Text Styling */
+.content-header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #333;
+}
+
+.content-header p {
+    font-size: 0.85rem;
+    margin: 0;
+    color: #666;
+}
+
+/* Grouping Search and Profile on the Right */
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between search box and profile */
+}
+
+/* Ensure search box doesn't grow too large */
+.search-box {
+    position: relative;
+    width: 250px;
+}
+
+/* Attention-grabbing animation for Critical alerts */
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(153, 27, 27, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(153, 27, 27, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(153, 27, 27, 0);
+    }
+}
+</style>
+<script src="forecast_page.js"></script>
+
+</body>
+</html>
